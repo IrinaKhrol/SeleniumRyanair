@@ -1,30 +1,29 @@
-﻿using OpenQA.Selenium;
-using static Ryanair.XpathRyanair;
+﻿using static Ryanair.XpathRyanair;
 
 namespace Ryanair
 {
     public class HomePage : BasePage
     {
-        public HomePage(IWebDriver driver, LoggerService logger) : base(driver, logger)
+        public HomePage() : base()
         {
             GoToUrl("https://www.ryanair.com/us/en");
         }
 
         public void InputDepartureStation(string nameStation)
         {
-            _driver.FindElement(By.XPath(INPUT_DEPARTURE_STATION)).SendKeys(nameStation);
+            FindElementWithWaiter(INPUT_DEPARTURE_STATION).SendKeys(nameStation);
         }
         public void InputDestinationStation(string nameStation)
         {
-            _driver.FindElement(By.XPath(INPUT_DESTINATION_STATION)).Click();
-            _driver.FindElement(By.XPath(INPUT_DESTINATION_STATION)).SendKeys(nameStation);
+            FindElementWithWaiter(INPUT_DESTINATION_STATION).Click();
+            FindElementWithWaiter(INPUT_DESTINATION_STATION).SendKeys(nameStation);
             FindElementWithWaiter(INPUT_CHOOSE_DESTINATION_STATION + nameStation + " ')]").Click();
         }
 
         public void ChooseDayCurrentMonth(string day)
         {
             try {FindElementWithWaiter(INPUT_DATE_DEPART + day+"']").Click(); }
-            catch (Exception) { _ = _logger.WriteLogAsync("Wrong date"); }
+            catch (Exception) {Log("Wrong date"); }
         }
 
         public void AddAdultPassenger(int count) 

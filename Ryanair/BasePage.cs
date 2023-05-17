@@ -1,56 +1,60 @@
-﻿using OpenQA.Selenium.Interactions;
-using OpenQA.Selenium.Support.UI;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using SeleniumExtras.WaitHelpers;
 using System.Collections.ObjectModel;
-
 
 namespace Ryanair
 {
     public abstract class BasePage
     {
-        protected IWebDriver _driver;
-        protected WebDriverWait _wait;
-        protected Actions _action;
-        protected readonly LoggerService _logger;
-        const int WAITTIME = 30;
-
-        public BasePage(IWebDriver driver, LoggerService logger)
+        DriverActions _driverActions;
+        public BasePage()
         {
-            _driver = driver;
-            _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(WAITTIME));
-            _action = new Actions(_driver);
-            _logger = logger;
+            _driverActions = DriverActions.GetDriverActions();
         }
 
         protected void GoToUrl(string url)
         {
-            _driver.Url = url;
-            _driver.Manage().Window.Maximize();
+            _driverActions._driver.Url = url;
+            _driverActions._driver.Manage().Window.Maximize();
         }
 
         protected void ScrollToElementAndClick(string xPath)
         {
-            _wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(xPath)));
-            _action.MoveToElement(_driver.FindElement(By.XPath(xPath)));
-            _action.Perform();
-            _driver.FindElement(By.XPath(xPath)).Click();
+            _driverActions._wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(xPath)));
+            _driverActions._action.MoveToElement(_driverActions._driver.FindElement(By.XPath(xPath)));
+            _driverActions._action.Perform();
+            _driverActions._driver.FindElement(By.XPath(xPath)).Click();
         }
         protected void ScrollToElement(string xPath)
         {
-            _wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(xPath)));
-            _action.MoveToElement(_driver.FindElement(By.XPath(xPath)));
-            _action.Perform();
+            _driverActions._wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(xPath)));
+            _driverActions._action.MoveToElement(_driverActions._driver.FindElement(By.XPath(xPath)));
+            _driverActions._action.Perform();
         }
 
         protected IWebElement FindElementWithWaiter(string xpath)
         {
-            return _wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(xpath)));
+            return _driverActions._wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(xpath)));
         }
 
         protected ReadOnlyCollection<IWebElement> FindElementsWithWaiter(string xpath)
         {
-            return _wait.Until(ExpectedConditions.PresenceOfAllElementsLocatedBy(By.XPath(xpath)));
+            return _driverActions._wait.Until(ExpectedConditions.PresenceOfAllElementsLocatedBy(By.XPath(xpath)));
+        }
+
+        public void Log(DataFlight dataFlight)
+        {
+            _driverActions._loggerServiceXML.WriteLogAsyncXML(dataFlight );
+        }
+
+        public void Log(string data)
+        {
+            _driverActions._loggerServiceTXT.WriteLogAsyncTXT(data);
+        }
+
+        public void DriverClose()
+        {
+            _driverActions._driver.Close();
         }
     }
 }
