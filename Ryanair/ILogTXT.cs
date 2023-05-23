@@ -2,6 +2,6 @@
 {
     internal interface ILogTXT
     {
-        public Task WriteLogAsyncTXT(string message);
+        public void  WriteLogAsyncTXT(string message);
     }
 }

@@ -19,11 +19,12 @@
             flightSelect.ChoiceSelectTo();
             flightSelect.ChoiceTypeFamilyPlus();
             flightSelect.ChoiceButtonBasket();
-            //flightSelect.GetInformationAboutFlightInTheBasket();
+            flightSelect.GetInformationAboutFlightInTheBasket();
             flightSelect.GetInformationAboutFlightXml();
             flightSelect.GetInformationAboutFlightTXT();
+            flightSelect.LogInformationAboutFlightDataBase();
 
-            home.DriverClose();
+           //home.DriverClose();
         }
     }
 }

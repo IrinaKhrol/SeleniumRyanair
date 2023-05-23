@@ -8,7 +8,7 @@ namespace Ryanair
     internal class DriverActions
     {
         const int WAITTIME = 30;
-        static DriverActions _instance;
+        static DriverActions? _instance;
         internal IWebDriver _driver;
         internal WebDriverWait _wait;
         internal Actions _action;

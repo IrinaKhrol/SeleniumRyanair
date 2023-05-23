@@ -9,10 +9,10 @@
             File.WriteAllText(PATH, string.Empty);
         }
 
-        public async Task WriteLogAsyncTXT(string message)
+        public void WriteLogAsyncTXT(string message)
         {
             using StreamWriter sw = new(PATH, true, System.Text.Encoding.Default);
-            await sw.WriteLineAsync(message);
+            sw.WriteLineAsync(message);
         }
     }
 }

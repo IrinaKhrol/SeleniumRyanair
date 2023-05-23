@@ -66,16 +66,47 @@ namespace Ryanair
             Log(GetDataFlight().GetDataFlightTXT());
         }
 
+        public void LogInformationAboutFlightDataBase()
+        {
+            var s = new LoggerServiceDb();
+            s.Create(GetDataFlight());
+        }
+
+        public DateTime GetDataTimeFlight(string XpathDate, string XpathTime)
+        {
+            string day = FindElementWithWaiter(XpathDate).GetAttribute("data-ref");
+            var time = GetOnlyTimeFlight(XpathTime);
+            string dayAndTime = day + " " + time;
+            return DateTime.Parse(dayAndTime, System.Globalization.CultureInfo.InvariantCulture);
+        }
+
+        public string GetOnlyTimeFlight(string XpathTime)
+        {
+           return FindElementWithWaiter(XpathTime).Text.ToString().Split("\n")[0];
+        }
+
+        public string GetOnlyCityFlight(string XpathTime)
+        {
+            return FindElementWithWaiter(XpathTime).Text.ToString().Split("\n")[1];
+        }
+
+        public FlightDetails GetFlightDetails(string dayFrom, string timeAndCityFrom, string timeAndCityTo)
+        {
+            var detailsFlight = new FlightDetails();
+            detailsFlight.DayTimeFrom = GetDataTimeFlight(dayFrom, timeAndCityFrom);
+            detailsFlight.CityFrom = GetOnlyCityFlight(timeAndCityFrom);
+            detailsFlight.DayTimeTo = GetDataTimeFlight(dayFrom, timeAndCityTo);
+            detailsFlight.CityTo = GetOnlyCityFlight(timeAndCityTo);
+            return detailsFlight;
+        }
+
+
         public DataFlight GetDataFlight()
         {
-            string dayDepart = FindElementWithWaiter(GET_DAY_DEPART_FROM).Text.ToString();
-            string timeAndCityDepartFrom = FindElementWithWaiter(GET_TIME_AND_CITY_DEPART_FROM).Text.ToString();
-            string timeAndCityDepartTo = FindElementWithWaiter(GET_TIME_AND_CITY_ARRIVE_TO).Text.ToString();
-            string dayReturn = FindElementWithWaiter(GET_DAY_RETURN_FROM).Text.ToString();
-            string timeAndCityReturnFrom = FindElementWithWaiter(GET_TIME_AND_CITY_RETURN_FROM).Text.ToString();
-            string timeAndCityReturnTo = FindElementWithWaiter(GET_TIME_AND_CITY_RETURN_TO).Text.ToString();
+            var departFlight = GetFlightDetails(GET_ONLY_DAY_DEPART, GET_TIME_AND_CITY_DEPART_FROM, GET_TIME_AND_CITY_ARRIVE_TO);
+            var returnFlight = GetFlightDetails(GET_ONLY_DAY_RETURN, GET_TIME_AND_CITY_RETURN_FROM, GET_TIME_AND_CITY_RETURN_TO);
             string costGeneral = FindElementWithWaiter(GET_COST_GENERAL).Text.ToString();
-            return new DataFlight(dayDepart, timeAndCityDepartFrom, timeAndCityDepartTo, dayReturn, timeAndCityReturnFrom, timeAndCityReturnTo, costGeneral);
+            return new DataFlight(departFlight, returnFlight,costGeneral);
         }
     }
 }

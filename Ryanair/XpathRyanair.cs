@@ -22,8 +22,11 @@
                               INFORMATION_ABOUT_FLIGHT_IN_THE_BASKET = "//div[@class='tooltip-inner']",
 
                               GET_DAY_DEPART_FROM = "//div[contains(@class,'flight-card__date')]",
+                              GET_ONLY_DAY_DEPART = "//div[@class='body-m-lg body-m-sm flight-segment-details ng-star-inserted']",
                               GET_TIME_AND_CITY_DEPART_FROM = "//div[@class='flight-info__time']",
                               GET_TIME_AND_CITY_ARRIVE_TO = "//div[@data-ref='flight-segment.arrival']",
+
+                              GET_ONLY_DAY_RETURN = "//div[@class='body-m-lg body-m-sm flight-segment-details ng-star-inserted'][1]",
 
                               GET_DAY_RETURN_FROM = "/html/body/app-root/flights-root/div/div/div/div/flights-lazy-content/flights-summary-container/flights-summary/div[2]/div[2]/journey-container/journey/flight-list/div/flight-card-new/div/div/div[1]/div",
                               GET_TIME_AND_CITY_RETURN_FROM = "/html/body/app-root/flights-root/div/div/div/div/flights-lazy-content/flights-summary-container/flights-summary/div[2]/div[2]/journey-container/journey/flight-list/div/flight-card-new/div/div/flight-info-new/div[1]",
@@ -31,3 +34,5 @@
                               GET_COST_GENERAL = "//ry-price[@class='price']";
     }
 }
+
+
