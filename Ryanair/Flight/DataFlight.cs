@@ -1,9 +1,8 @@
-﻿
-using System.Text;
+﻿using System.Text;
 
-namespace Ryanair
+namespace Ryanair.Flight
 {
-    public class DataFlight 
+    public class DataFlight
     {
         public int Id { get; set; }
         public List<FlightDetails> flightDepartAndReturn { get; set; } = new();
@@ -11,8 +10,8 @@ namespace Ryanair
 
         public DataFlight(FlightDetails flightDepart, FlightDetails flightReturn, string costGeneral)
         {
-           flightDepartAndReturn = new() {flightDepart, flightReturn };
-           CostGeneral = costGeneral;
+            flightDepartAndReturn = new() { flightDepart, flightReturn };
+            CostGeneral = costGeneral;
         }
 
         public DataFlight()

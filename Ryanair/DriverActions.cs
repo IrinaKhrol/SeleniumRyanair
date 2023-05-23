@@ -2,6 +2,8 @@
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using Ryanair.Flight;
+using Ryanair.LoggerServices;
 
 namespace Ryanair
 {
@@ -13,7 +15,7 @@ namespace Ryanair
         internal WebDriverWait _wait;
         internal Actions _action;
         internal LoggerServiceTXT _loggerServiceTXT;
-        internal LoggerServiceXML _loggerServiceXML;
+        internal LoggerServiceXML<DataFlight> _loggerServiceXML;
 
         private DriverActions()
         {
@@ -21,7 +23,7 @@ namespace Ryanair
             _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(WAITTIME));
             _action = new Actions(_driver);
             _loggerServiceTXT = new LoggerServiceTXT();
-            _loggerServiceXML = new LoggerServiceXML();
+            _loggerServiceXML = new LoggerServiceXML<DataFlight>();
         }
 
         public static DriverActions GetDriverActions() 

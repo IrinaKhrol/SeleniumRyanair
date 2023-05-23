@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace Ryanair
+namespace Ryanair.Flight
 {
     public class FlightDetails
     {
@@ -10,7 +10,7 @@ namespace Ryanair
         public DateTime DayTimeTo { get; set; }
         public string? CityTo { get; set; }
 
-        public FlightDetails(DateTime? dayTimeFrom, string? cityFrom, DateTime? dayTimeTo, string? cityTo)  
+        public FlightDetails(DateTime? dayTimeFrom, string? cityFrom, DateTime? dayTimeTo, string? cityTo)
         {
             DayTimeFrom = (DateTime)dayTimeFrom;
             DayTimeTo = (DateTime)dayTimeTo;

@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using SeleniumExtras.WaitHelpers;
 using System.Collections.ObjectModel;
+using Ryanair.Flight;
 
 namespace Ryanair
 {

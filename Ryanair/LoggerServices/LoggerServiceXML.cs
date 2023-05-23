@@ -1,11 +1,13 @@
 ﻿using System.Xml.Serialization;
+using LoggerXMl;
+using Ryanair.Flight;
 
-namespace Ryanair
+namespace Ryanair.LoggerServices
 {
-    public class LoggerServiceXML : ILogXML
+    public class LoggerServiceXML<T> : ILogXML<T>
     {
         private string PATH = @"C:\Users\Irina\Documents\LogXML.xml";
-        public async Task WriteLogAsyncXML(DataFlight dataFlight)
+        public void WriteLogAsyncXML(T dataFlight)
         {
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(DataFlight));
             using (TextWriter writer = new StreamWriter(PATH))

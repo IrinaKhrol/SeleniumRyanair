@@ -1,9 +1,14 @@
-﻿namespace Ryanair
+﻿
+using System.Reflection;
+
+namespace Ryanair
 {
     internal class Program
     {
         static void Main(string[] args)
         {
+
+
             HomePage home = new HomePage();
             home.AgreeWithUsingCookies();
             home.InputDepartureStation("Sofia");
@@ -19,7 +24,7 @@
             flightSelect.ChoiceSelectTo();
             flightSelect.ChoiceTypeFamilyPlus();
             flightSelect.ChoiceButtonBasket();
-            flightSelect.GetInformationAboutFlightInTheBasket();
+            //flightSelect.GetInformationAboutFlightInTheBasket();
             flightSelect.GetInformationAboutFlightXml();
             flightSelect.GetInformationAboutFlightTXT();
             flightSelect.LogInformationAboutFlightDataBase();

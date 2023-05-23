@@ -1,9 +1,14 @@
 ﻿using static Ryanair.XpathRyanair;
 using System.Text;
-
+using Ryanair.Flight;
+using Ryanair.LoggerServices;
+using LoggerTXT;
+using System.Reflection;
+using LoggerDb;
+using OpenQA.Selenium;
 namespace Ryanair
 {
-    internal class FlightSelect : BasePage
+    public class FlightSelect : BasePage
     {
         public FlightSelect() : base()
         {
@@ -68,8 +73,10 @@ namespace Ryanair
 
         public void LogInformationAboutFlightDataBase()
         {
-            var s = new LoggerServiceDb();
-            s.Create(GetDataFlight());
+            Assembly assem = typeof(ILogDb<DataFlight>).Assembly;
+            ILogDb<DataFlight> logDb = (ILogDb<DataFlight>)assem.CreateInstance("ILogDb");
+            //var s = new LoggerServiceDb<DataFlight>();
+            logDb.Create(GetDataFlight());
         }
 
         public DateTime GetDataTimeFlight(string XpathDate, string XpathTime)

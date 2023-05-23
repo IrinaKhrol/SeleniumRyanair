@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Ryanair.Flight;
+using Microsoft.EntityFrameworkCore;
 
 namespace Ryanair
 {

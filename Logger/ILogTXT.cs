@@ -1,6 +1,6 @@
-﻿namespace Ryanair
+﻿namespace LoggerTXT
 {
-    internal interface ILogTXT
+    public interface ILogTXT
     {
         public void  WriteLogAsyncTXT(string message);
     }

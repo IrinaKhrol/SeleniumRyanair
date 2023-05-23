@@ -1,10 +1,12 @@
-﻿namespace Ryanair
+﻿using LoggerTXT;
+
+namespace Ryanair.LoggerServices
 {
     public sealed class LoggerServiceTXT : ILogTXT
     {
         private const string PATH = @"C:\Users\Irina\Documents\MyLog.txt";
 
-        public  LoggerServiceTXT() 
+        public LoggerServiceTXT()
         {
             File.WriteAllText(PATH, string.Empty);
         }
