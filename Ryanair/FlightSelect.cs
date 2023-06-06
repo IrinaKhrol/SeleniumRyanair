@@ -1,11 +1,8 @@
 ﻿using static Ryanair.XpathRyanair;
+using ILogger;
+using Flight;
 using System.Text;
-using Ryanair.Flight;
-using Ryanair.LoggerServices;
-using LoggerTXT;
-using System.Reflection;
-using LoggerDb;
-using OpenQA.Selenium;
+
 namespace Ryanair
 {
     public class FlightSelect : BasePage
@@ -56,7 +53,7 @@ namespace Ryanair
             FindElementWithWaiter(BUTTON_BASKET).Click();
         }
 
-        public void GetInformationAboutFlightInTheBasket() 
+        /*public void GetInformationAboutFlightInTheBasket() 
         {
             Log(FindElementWithWaiter(INFORMATION_ABOUT_FLIGHT_IN_THE_BASKET).Text);
         }
@@ -68,16 +65,13 @@ namespace Ryanair
 
         public void GetInformationAboutFlightTXT () 
         {
-            Log(GetDataFlight().GetDataFlightTXT());
-        }
+            Log(GetDataFlight().GetDataFlightString());
+        }*/
 
-        public void LogInformationAboutFlightDataBase()
+        /* public void LogInformationAboutFlightDataBase()
         {
-            Assembly assem = typeof(ILogDb<DataFlight>).Assembly;
-            ILogDb<DataFlight> logDb = (ILogDb<DataFlight>)assem.CreateInstance("ILogDb");
-            //var s = new LoggerServiceDb<DataFlight>();
-            logDb.Create(GetDataFlight());
-        }
+            new LoggerServiceDb<DataFlight>().Create(GetDataFlight());
+        }*/
 
         public DateTime GetDataTimeFlight(string XpathDate, string XpathTime)
         {
@@ -115,5 +109,19 @@ namespace Ryanair
             string costGeneral = FindElementWithWaiter(GET_COST_GENERAL).Text.ToString();
             return new DataFlight(departFlight, returnFlight,costGeneral);
         }
+
+        /*public string GetDataFlightString() 
+        {
+            var sb = new StringBuilder();
+            sb.Append(FindElementWithWaiter(GET_ONLY_DAY_DEPART).Text.ToString() + " ");
+            sb.Append(FindElementWithWaiter(GET_ONLY_TIME_DEPART).Text.ToString().Split("-")[0] + " ");
+            sb.Append(FindElementWithWaiter(GET_ONLY_CITY_DEPART).Text.ToString() + " ");
+            sb.Append(FindElementWithWaiter(GET_ONLY_DAY_RETURN).Text.ToString() + " ");
+            sb.Append(FindElementWithWaiter(GET_TIME_AND_CITY_RETURN_FROM).Text.ToString() + " ");
+            sb.Append(FindElementWithWaiter(GET_TIME_AND_CITY_RETURN_TO).Text.ToString() + " ");
+            sb.Append(FindElementWithWaiter(GET_COST_GENERAL).Text.ToString());
+            Console.WriteLine(sb.ToString());
+            return sb.ToString();
+        }*/
     }
 }

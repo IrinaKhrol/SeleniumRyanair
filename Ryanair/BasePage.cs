@@ -1,7 +1,7 @@
 ﻿using OpenQA.Selenium;
 using SeleniumExtras.WaitHelpers;
 using System.Collections.ObjectModel;
-using Ryanair.Flight;
+using ILogger;
 
 namespace Ryanair
 {
@@ -43,15 +43,15 @@ namespace Ryanair
             return _driverActions._wait.Until(ExpectedConditions.PresenceOfAllElementsLocatedBy(By.XPath(xpath)));
         }
 
-        public void Log(DataFlight dataFlight)
-        {
-            _driverActions._loggerServiceXML.WriteLogAsyncXML(dataFlight );
-        }
+        //public void Log(DataFlight dataFlight)
+        //{
+        //    _driverActions._loggerServiceXML.WriteLogXML(dataFlight );
+        //}
 
-        public void Log(string data)
-        {
-            _driverActions._loggerServiceTXT.WriteLogAsyncTXT(data);
-        }
+        //public void Log(string data)
+        //{
+        //   _driverActions._loggerServiceTXT.WriteLogTXT(data);
+        //}
 
         public void DriverClose()
         {

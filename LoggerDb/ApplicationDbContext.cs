@@ -1,7 +1,8 @@
-﻿using Ryanair.Flight;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Flight;
 
-namespace Ryanair
+
+namespace LoggerDb
 {
     public class ApplicationDbContext : DbContext
     {

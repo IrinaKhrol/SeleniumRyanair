@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace Ryanair.Flight
+namespace Flight
 {
     public class FlightDetails
     {
@@ -32,17 +32,17 @@ namespace Ryanair.Flight
         //cityTo = CityTo;
         //}
 
-        public string GetFlightDetailsTXT()
+        public string GetFlightDetailsString()
         {
             var sb = new StringBuilder();
             sb.Append("Day and time depart : ");
-            sb.Append(DayTimeFrom + "\n");
+            sb.Append(DayTimeFrom + " \n ");
             sb.Append("City depart : ");
-            sb.Append(CityFrom + "\n");
+            sb.Append(CityFrom + " \n ");
             sb.Append("Day and time to : ");
-            sb.Append(DayTimeTo + "\n");
+            sb.Append(DayTimeTo + " \n ");
             sb.Append("City to : ");
-            sb.Append(CityTo + "\n");
+            sb.Append(CityTo + " \n ");
             return sb.ToString();
         }
     }

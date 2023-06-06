@@ -23,7 +23,7 @@ namespace Ryanair
         public void ChooseDayCurrentMonth(string day)
         {
             try {FindElementWithWaiter(INPUT_DATE_DEPART + day+"']").Click(); }
-            catch (Exception) {Log("Wrong date"); }
+            catch (Exception) { }
         }
 
         public void AddAdultPassenger(int count) 

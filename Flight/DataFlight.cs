@@ -1,6 +1,7 @@
-﻿using System.Text;
+﻿
+using System.Text;
 
-namespace Ryanair.Flight
+namespace Flight
 {
     public class DataFlight
     {
@@ -18,11 +19,11 @@ namespace Ryanair.Flight
         {
         }
 
-        public string GetDataFlightTXT()
+        public string GetDataFlightString()
         {
             var sb = new StringBuilder();
-            sb.Append(flightDepartAndReturn[0].GetFlightDetailsTXT());
-            sb.Append(flightDepartAndReturn[1].GetFlightDetailsTXT());
+            sb.Append(flightDepartAndReturn[0].GetFlightDetailsString());
+            sb.Append(flightDepartAndReturn[1].GetFlightDetailsString());
             sb.Append(CostGeneral + "\n");
             return sb.ToString();
         }

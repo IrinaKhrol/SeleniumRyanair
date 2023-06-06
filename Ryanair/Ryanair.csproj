@@ -13,14 +13,13 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.5" />
     <PackageReference Include="Selenium.Support" Version="4.9.0" />
     <PackageReference Include="Selenium.WebDriver" Version="4.9.0" />
-    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="112.0.5615.4900" />
+    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="114.0.5735.9000" />
     <PackageReference Include="SeleniumExtras.WaitHelpers" Version="1.0.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LoggerDb\LoggerDb.csproj" />
-    <ProjectReference Include="..\LoggerTXT\LoggerTXT.csproj" />
-    <ProjectReference Include="..\LoggerXMl\LoggerXML.csproj" />
+    <ProjectReference Include="..\Flight\Flight.csproj" />
+    <ProjectReference Include="..\ILogger\ILogger.csproj" />
   </ItemGroup>
 
 </Project>

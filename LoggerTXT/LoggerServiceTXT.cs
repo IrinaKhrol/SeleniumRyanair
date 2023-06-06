@@ -1,8 +1,8 @@
-﻿using LoggerTXT;
+﻿using ILogger;
 
-namespace Ryanair.LoggerServices
+namespace LoggerTXT
 {
-    public sealed class LoggerServiceTXT : ILogTXT
+    public class LoggerServiceTXT : ILog
     {
         private const string PATH = @"C:\Users\Irina\Documents\MyLog.txt";
 
@@ -11,10 +11,12 @@ namespace Ryanair.LoggerServices
             File.WriteAllText(PATH, string.Empty);
         }
 
-        public void WriteLogAsyncTXT(string message)
+        public void Log(string message)
         {
             using StreamWriter sw = new(PATH, true, System.Text.Encoding.Default);
             sw.WriteLineAsync(message);
         }
     }
 }
+
+

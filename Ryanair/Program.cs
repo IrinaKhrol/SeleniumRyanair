@@ -1,5 +1,5 @@
-﻿
-using System.Reflection;
+﻿using Microsoft.Extensions.Logging;
+using System.Diagnostics;
 
 namespace Ryanair
 {
@@ -8,13 +8,12 @@ namespace Ryanair
         static void Main(string[] args)
         {
 
-
             HomePage home = new HomePage();
             home.AgreeWithUsingCookies();
             home.InputDepartureStation("Sofia");
             home.InputDestinationStation("Malta");
-            home.ChooseDayCurrentMonth("2023-05-28");
-            home.ChooseDayCurrentMonth("2023-06-25");
+            home.ChooseDayCurrentMonth("2023-06-18");
+            home.ChooseDayCurrentMonth("2023-06-21");
             home.AddAdultPassenger(1);
             home.AddChildrenPassenger(2);
             home.ConfirmSelection();
@@ -24,12 +23,11 @@ namespace Ryanair
             flightSelect.ChoiceSelectTo();
             flightSelect.ChoiceTypeFamilyPlus();
             flightSelect.ChoiceButtonBasket();
-            //flightSelect.GetInformationAboutFlightInTheBasket();
-            flightSelect.GetInformationAboutFlightXml();
-            flightSelect.GetInformationAboutFlightTXT();
-            flightSelect.LogInformationAboutFlightDataBase();
 
-           //home.DriverClose();
+            //Logger.CreateLog(@"C:\Users\Irina\source\repos\SeleniumRyanair\LoggerXML\bin\Debug\net6.0\LoggerXML.dll", flightSelect.GetDataFlight().GetDataFlightString());
+            Logger.CreateLog(@"C:\Users\Irina\source\repos\SeleniumRyanair\LoggerDb\bin\Debug\net6.0\LoggerDb.dll", flightSelect.GetDataFlight().GetDataFlightString()); 
+
+            home.DriverClose();
         }
     }
 }
