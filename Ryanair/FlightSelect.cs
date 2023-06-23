@@ -1,7 +1,5 @@
 ﻿using static Ryanair.XpathRyanair;
-using ILogger;
 using Flight;
-using System.Text;
 
 namespace Ryanair
 {
@@ -106,22 +104,9 @@ namespace Ryanair
         {
             var departFlight = GetFlightDetails(GET_ONLY_DAY_DEPART, GET_TIME_AND_CITY_DEPART_FROM, GET_TIME_AND_CITY_ARRIVE_TO);
             var returnFlight = GetFlightDetails(GET_ONLY_DAY_RETURN, GET_TIME_AND_CITY_RETURN_FROM, GET_TIME_AND_CITY_RETURN_TO);
+            Thread.Sleep(1000);
             string costGeneral = FindElementWithWaiter(GET_COST_GENERAL).Text.ToString();
             return new DataFlight(departFlight, returnFlight,costGeneral);
         }
-
-        /*public string GetDataFlightString() 
-        {
-            var sb = new StringBuilder();
-            sb.Append(FindElementWithWaiter(GET_ONLY_DAY_DEPART).Text.ToString() + " ");
-            sb.Append(FindElementWithWaiter(GET_ONLY_TIME_DEPART).Text.ToString().Split("-")[0] + " ");
-            sb.Append(FindElementWithWaiter(GET_ONLY_CITY_DEPART).Text.ToString() + " ");
-            sb.Append(FindElementWithWaiter(GET_ONLY_DAY_RETURN).Text.ToString() + " ");
-            sb.Append(FindElementWithWaiter(GET_TIME_AND_CITY_RETURN_FROM).Text.ToString() + " ");
-            sb.Append(FindElementWithWaiter(GET_TIME_AND_CITY_RETURN_TO).Text.ToString() + " ");
-            sb.Append(FindElementWithWaiter(GET_COST_GENERAL).Text.ToString());
-            Console.WriteLine(sb.ToString());
-            return sb.ToString();
-        }*/
     }
 }

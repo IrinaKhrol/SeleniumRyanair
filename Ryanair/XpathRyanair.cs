@@ -1,9 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System;
-
-namespace Ryanair
+﻿namespace Ryanair
 {
     internal static class XpathRyanair
     {
@@ -38,7 +33,7 @@ namespace Ryanair
   
                               GET_TIME_AND_CITY_RETURN_FROM = "//flight-card-new[@data-e2e='flight-card--inbound']//div[@data-ref='flight-segment.departure']",
                               GET_TIME_AND_CITY_RETURN_TO = "//flight-card-new[@data-e2e='flight-card--inbound']//div[@data-ref='flight-segment.arrival']",
-                              GET_COST_GENERAL = "//ry-price[@class='price']";
+                              GET_COST_GENERAL = "//div[@autoclose='outside']";
     }
 }
 

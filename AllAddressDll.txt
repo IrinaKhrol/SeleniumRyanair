@@ -1,0 +1,3 @@
+C:\Users\Irina\source\repos\SeleniumRyanair\LoggerXML\bin\Debug\net6.0\LoggerXML.dll
+C:\Users\Irina\source\repos\SeleniumRyanair\LoggerDb\bin\Debug\net6.0\LoggerDb.dll
+C:\Users\Irina\source\repos\SeleniumRyanair\LoggerTXT\bin\Debug\net6.0\LoggerTXT.dll

@@ -22,16 +22,6 @@ namespace Flight
         {
         }
 
-
-
-        //public void Deconstruct (out DateTime dayTimeFrom, out string cityFrom, out DateTime dayTimeTo, out  string cityTo)
-        //{
-        //dayTimeFrom = (DateTime)DayTimeFrom;
-        //dayTimeTo = (DateTime)DayTimeTo;
-        //cityFrom = CityFrom;
-        //cityTo = CityTo;
-        //}
-
         public string GetFlightDetailsString()
         {
             var sb = new StringBuilder();

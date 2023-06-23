@@ -4,7 +4,7 @@ using Flight;
 
 namespace LoggerDb
 {
-    public class ApplicationDbContext : DbContext
+    internal class ApplicationDbContext : DbContext
     {
         public DbSet<DataFlight> dataFlights { get; set; } = null;
 

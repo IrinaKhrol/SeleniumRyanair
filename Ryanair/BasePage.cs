@@ -43,16 +43,6 @@ namespace Ryanair
             return _driverActions._wait.Until(ExpectedConditions.PresenceOfAllElementsLocatedBy(By.XPath(xpath)));
         }
 
-        //public void Log(DataFlight dataFlight)
-        //{
-        //    _driverActions._loggerServiceXML.WriteLogXML(dataFlight );
-        //}
-
-        //public void Log(string data)
-        //{
-        //   _driverActions._loggerServiceTXT.WriteLogTXT(data);
-        //}
-
         public void DriverClose()
         {
             _driverActions._driver.Close();
